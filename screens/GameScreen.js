@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import Title from "../components/Title";
 function GameScreen() {
   return (
     <View style={styles.screen}>
-      <Text>Oponent's Guess</Text>
-
+      <Title>Opponent's Guess</Title>
       <View>
         <Text>Higher or Lower</Text>
       </View>
