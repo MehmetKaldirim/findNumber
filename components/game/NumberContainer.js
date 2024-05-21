@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Colors from "../../constants/colors";
 function NumberContainer({ children }) {
-  console.log(deviceWidth);
   return (
     <View style={styles.container}>
       <Text style={styles.numberText}>{children}</Text>
