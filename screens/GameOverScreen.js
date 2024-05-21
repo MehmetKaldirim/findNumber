@@ -5,16 +5,34 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  useWindowDimensions,
 } from "react-native";
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
+  const { width, height } = useWindowDimensions();
+
+  let imageSize = 300;
+
+  if (width < 380) {
+    imageSize = 150;
+  }
+
+  if (height < 400) {
+    imageSize = 80;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  };
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.rootContainer}>
         <Title>Game is over!</Title>
-        <View style={styles.imageContainer}>
+        <View style={[styles.imageContainer, imageStyle]}>
           <Image
             style={styles.image}
             source={require("../assets/images/success.png")}
@@ -36,8 +54,8 @@ function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
 }
 
 export default GameOverScreen;
-const deviceWidth = Dimensions.get("window").width;
-console.log(deviceWidth);
+// const deviceWidth = Dimensions.get("window").width;
+// console.log(deviceWidth);
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -49,9 +67,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: {
-    width: deviceWidth < 380 ? 200 : deviceWidth > 852 ? 450 : 300,
-    height: deviceWidth < 380 ? 200 : deviceWidth > 852 ? 450 : 300,
-    borderRadius: deviceWidth < 380 ? 90 : 180,
+    // width: deviceWidth < 380 ? 200 : deviceWidth > 852 ? 450 : 300,
+    // height: deviceWidth < 380 ? 200 : deviceWidth > 852 ? 450 : 300,
+    // borderRadius: deviceWidth < 380 ? 90 : 180,
     borderWidth: 3,
     borderColor: Colors.primary800,
     overflow: "hidden",
